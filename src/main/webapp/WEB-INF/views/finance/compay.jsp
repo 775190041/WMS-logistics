@@ -13,7 +13,7 @@
 	.hourse{
 		width:400px;
 		height:400px;
-		background:url(../static/style/images/hourse.jpg) no-repeat 5px 5px;
+		background:url(/static/style/images/hourse.jpg) no-repeat 5px 5px;
 	}
 </style>
 <body>

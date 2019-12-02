@@ -45,6 +45,7 @@ public class GodownServiceImpl implements GodownService {
         return godownMapper.selectByPrimaryKey(goId);
     }
 
+    @Override
     public int insert(Godown godown) {
         return godownMapper.insert(godown);
     }

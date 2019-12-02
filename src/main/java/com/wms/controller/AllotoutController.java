@@ -26,7 +26,6 @@ import java.util.Map;
 
 /**
  * 调拨单管理
- * Created by ZhongYu on 2016/12/21.
  */
 @Controller
 @RequestMapping(value = "allotout")
@@ -132,15 +131,15 @@ public class AllotoutController extends BaseController {
                 URL url = GodownEntryController.class.getResource("/" + file.getOriginalFilename());
                 List<List<String>> lists = ReadXls.readxls(url.getFile());
                 Allotout allotout = new Allotout();
-                List<String> objects = lists.get(0);
+                List<String> objects = lists.get(1);
                 for (int i = 0; i < objects.size(); i++) {
                     allotout.setAoName(objects.get(0));
                     allotout.setAoSkumodel(objects.get(1));
                     allotout.setAoNum(Integer.valueOf(objects.get(2)));
+                    allotout.setAoVolume(Double.valueOf(objects.get(3)));
                     allotout.setAoWhid(objects.get(4));
                     allotout.setAoSippingno(objects.get(5));
                     allotout.setAoTime(TimeUtils.updateTime(objects.get(6)));
-                    allotout.setAoVolume(Double.valueOf(objects.get(3)));
                 }
                 model.addAttribute("allotout", allotout);
             } catch (Exception e) {

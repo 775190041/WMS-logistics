@@ -46,45 +46,47 @@ public class AllotputController extends BaseController {
 	public String alloputPage(){
 		return "putstorage/alloputPage";
 	}
-	
-	@RequestMapping("/readExcle")
-	public String Excle(@RequestParam("file") MultipartFile file, HttpServletRequest request, Model model) {
-		if (file != null) {
-			try {
-				String path = (AllotputController.class.getResource("/").toString()).substring(6);
-				if (!file.isEmpty()) {
-					Streams.copy(file.getInputStream(), new FileOutputStream(path + "/" + file.getOriginalFilename()),
-							true);
-				}
-				URL url = AllotputController.class.getResource("/" + file.getOriginalFilename());
-				List<List<String>> list = ReadXls.readxls(url.getFile());
-				Allotput ap = new Allotput();
-				List<String> obj = list.get(0);
-				for (int j = 0; j < obj.size(); j++) {
-					ap.setApName(obj.get(0));
-					ap.setApSkumodel(obj.get(1));
-					ap.setApNum(Double.valueOf(obj.get(2)));
-					ap.setApVolume(Double.valueOf(obj.get(3)));
-					ap.setApWhid(obj.get(4));//仓库
-					ap.setApSipping(obj.get(5));
-					ap.setApTime(updateTime(obj.get(6)));
-				}
-			 	Godown g = godownService.selectByWhid(ap.getApWhid());
-			 	ap.setApWhid(g.getGoId().toString());
-				int a = allotputService.insert(ap);
-				if(a>0){
-					model.addAttribute("msg", "添加成功");
-				}else{
-					model.addAttribute("msg", "添加失败");
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return "putstorage/alloputPage";
-	}
-	
-	@GetMapping("/editPage")
+
+    @RequestMapping("/readExcle")
+    public String Excle(@RequestParam("file") MultipartFile file, HttpServletRequest request, Model model) {
+        if (file != null) {
+            try {
+                String path = (AllotputController.class.getResource("/").toString()).substring(6);
+                if (!file.isEmpty()) {
+                    Streams.copy(file.getInputStream(), new FileOutputStream(path + "/" + file.getOriginalFilename()),
+                            true);
+                }
+                URL url = AllotputController.class.getResource("/" + file.getOriginalFilename());
+                List<List<String>> list = ReadXls.readxls(url.getFile());
+                Allotput ap = new Allotput();
+                int rows = 0;
+                for (int i = 1 ; i < list.size() ; i++){
+                    List<String> obj = list.get(i);
+                    ap.setApName(obj.get(0));
+                    ap.setApSkumodel(obj.get(1));
+                    ap.setApNum(Double.valueOf(obj.get(2)));
+                    ap.setApVolume(Double.valueOf(obj.get(3)));
+                    ap.setApWhid(obj.get(4)); //仓库
+                    ap.setApSipping(obj.get(5));
+                    ap.setApTime(updateTime(obj.get(6)));
+                    Godown g = godownService.selectByWhid(ap.getApWhid());
+                    ap.setApWhid(g.getGoId().toString());
+                    rows = allotputService.insert(ap);
+                }
+                if(rows > 0){
+                    model.addAttribute("msg", "添加成功");
+                }else{
+                    model.addAttribute("msg", "添加失败");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return "putstorage/alloputPage";
+    }
+
+
+    @GetMapping("/editPage")
     public String editPage(Integer id, Model model) {
         Allotput all = allotputService.selectByPrimaryKey(id);
         List<Integer> ids = new ArrayList<Integer>();

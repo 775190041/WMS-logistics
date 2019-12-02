@@ -29,6 +29,7 @@
         from adjust
         where j_id = #{jId,jdbcType=INTEGER}
     </select>
+
     <select id="select" resultMap="BaseResultMap">
         select a.*,g.*
         from adjust a, godown g where a.j_whid = g.go_id

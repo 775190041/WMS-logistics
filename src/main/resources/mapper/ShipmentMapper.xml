@@ -43,7 +43,7 @@
     </select>
     <!-- 分页查询 -->
     <select id="selectShipmentPage" resultMap="BaseResultMap">
-        SELECT sh.sh_id, sh.sh_storeid, sh.sh_time, sh.sh_phone, sh.sh_sippingNO, sh.sh_whid, sh.sh_damage, sh.sh_cause, sh.sh_SKUmodel, sh.sh_shnum, sh.sh_totalweigh, sh.sh_totalvolume, sh.status, g.*
+        SELECT sh.sh_id, sh.sh_storeid, sh.sh_time, sh.sh_phone, sh.sh_sippingNO, sh.sh_whid, sh.sh_damage, sh.sh_cause, sh.sh_SKUmodel, sh.sh_shnum, sh.sh_totalweigh, sh.sh_totalvolume, sh.status,  g.*
         FROM shipment sh, godown g
         WHERE sh.sh_whid = g.go_whid
         <if test=" name != null and name != '' ">

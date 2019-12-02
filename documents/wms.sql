@@ -17,6 +17,16 @@ CREATE TABLE `adjust` (
   PRIMARY KEY (`j_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '调整入库/出库单';
 
+insert  into  adjust(j_id, j_name, j_SKUmodel, j_num, j_names, j_cause, j_time, j_whid, j_volum)
+values (1,'老干妈','B001',20,'haisao','调试数据','2019-11-21',1,500);
+insert  into  adjust(j_id, j_name, j_SKUmodel, j_num, j_names, j_cause, j_time, j_whid, j_volum)
+values (2,'包菜','D002',120,'haisao','调试数据','2019-11-21',2,100);
+insert  into  adjust(j_id, j_name, j_SKUmodel, j_num, j_names, j_cause, j_time, j_whid, j_volum)
+values (3,'蔬菜','W001',10,'haisao','调试数据','2019-11-21',3,300);
+insert  into  adjust(j_id, j_name, j_SKUmodel, j_num, j_names, j_cause, j_time, j_whid, j_volum)
+values (4,'玫瑰花','W002',200,'haisao','调试数据','2019-11-21',3,20);
+insert  into  adjust(j_id, j_name, j_SKUmodel, j_num, j_names, j_cause, j_time, j_whid, j_volum)
+values (5,'菊花','W003',2,'haisao','调试数据','2019-11-21',3,2);
 
 -- Records of adjust
 -- Table structure for allotout
@@ -32,8 +42,17 @@ CREATE TABLE `allotout` (
   `ao_volume` double NOT NULL COMMENT '货物体积',
   PRIMARY KEY (`ao_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='调拨出库单';
-
--- Records of allotout
+insert  into allotout(ao_id, ao_name, ao_SKUmodel, ao_num, ao_whid, ao_sippingNO, ao_time, ao_volume)
+values (1,'爆米花','S002',12,2,'321414124','2019-11-19',30);
+insert  into allotout(ao_id, ao_name, ao_SKUmodel, ao_num, ao_whid, ao_sippingNO, ao_time, ao_volume)
+values (2,'火龙果','S003',20,2,'235253232','2019-11-19',300);
+insert  into allotout(ao_id, ao_name, ao_SKUmodel, ao_num, ao_whid, ao_sippingNO, ao_time, ao_volume)
+values (3,'相机','S001',12,2,'353645633','2019-11-19',100);
+insert  into allotout(ao_id, ao_name, ao_SKUmodel, ao_num, ao_whid, ao_sippingNO, ao_time, ao_volume)
+values (4,'香蕉','S004',12,200,'532525','2019-11-19',3000);
+insert  into allotout(ao_id, ao_name, ao_SKUmodel, ao_num, ao_whid, ao_sippingNO, ao_time, ao_volume)
+values (5,'麻花','S005',12,33,'653733242','2019-11-19',200);
+-- Records of allotoutf
 -- Table structure for allotput
 DROP TABLE IF EXISTS `allotput`;
 CREATE TABLE `allotput` (
@@ -48,7 +67,14 @@ CREATE TABLE `allotput` (
   `ap_address` varchar(255) DEFAULT NULL COMMENT '地址',
   PRIMARY KEY (`ap_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '调拨入库单';
-
+insert into allotput(ap_id, ap_name, ap_SKUmodel, ap_num, ap_whid, ap_sipping, ap_time, ap_volume, ap_address)
+values(1,'辣条','B001',20,1,'10086','2019-11-13',20,200);
+insert into allotput(ap_id, ap_name, ap_SKUmodel, ap_num, ap_whid, ap_sipping, ap_time, ap_volume, ap_address)
+values(2,'可乐','B002',200,2,'110','2019-11-4',200,2000);
+insert into allotput(ap_id, ap_name, ap_SKUmodel, ap_num, ap_whid, ap_sipping, ap_time, ap_volume, ap_address)
+values(3,'风扇','C001',20,3,'119','2019-11-15',20,600);
+insert into allotput(ap_id, ap_name, ap_SKUmodel, ap_num, ap_whid, ap_sipping, ap_time, ap_volume, ap_address)
+values(4,'宝马','D001',20,3,'666','2019-11-16',20,400000);
 -- ----------------------------
 -- Records of allotput
 -- ----------------------------
@@ -60,17 +86,26 @@ DROP TABLE IF EXISTS `cargo`;
 CREATE TABLE `cargo` (
   `c_id` int(11) NOT NULL AUTO_INCREMENT,
   `c_name` varchar(255) DEFAULT NULL COMMENT  '货物名称';
-  `c_storerid` varchar(255) DEFAULT NULL COMMENT  '仓库工作人员ID',
-  `c_supplierid` varchar(255) DEFAULT NULL COMMENT '供应商ID',
-  `c_shippingNO` varchar(255) DEFAULT NULL COMMENT  '运输',
+  `c_storerid` varchar(255) DEFAULT NULL COMMENT  '货主',
+  `c_supplierid` varchar(255) DEFAULT NULL COMMENT '供应商',
+  `c_shippingNO` varchar(255) DEFAULT NULL COMMENT  '客户托单号',
   `c_whid` int(11) DEFAULT NULL COMMENT = '仓库编号',
   `c_num` int(11) DEFAULT NULL COMMENT = '数量',
-  `c_totalweight` double DEFAULT NULL COMMENT = '总重量',
-  `c_totalvolume` double DEFAULT NULL COMMENT = '总体积',
-  `c_receivedate` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT = '接收日期',
+  `c_totalweight` double DEFAULT NULL COMMENT = '总货毛重',
+  `c_totalvolume` double DEFAULT NULL COMMENT = '总货体积',
+  `c_receivedate` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT = '入库时间',
   `c_SKUmodel` varchar(255) DEFAULT NULL COMMENT = '货物编号/型号',
   PRIMARY KEY (`c_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT= '货物表';
+insert into cargo(c_id, c_name, c_storerid, c_supplierid, c_shippingNO, c_whid, c_num, c_totalweight, c_totalvolume, c_receivedate, c_SKUmodel)
+values (1,'上海硫磺皂','韦海超','上海民企','32423525253',1,20,100,200,'2019-11-14','B001');
+insert into cargo(c_id, c_name, c_storerid, c_supplierid, c_shippingNO, c_whid, c_num, c_totalweight, c_totalvolume, c_receivedate, c_SKUmodel)
+values (2,'浓硫酸','李钊灿','上海民企','523235235',2,10,10,200,'2019-11-14','B002');
+insert into cargo(c_id, c_name, c_storerid, c_supplierid, c_shippingNO, c_whid, c_num, c_totalweight, c_totalvolume, c_receivedate, c_SKUmodel)
+values (3,'稀硫酸','巫山雄','上海民企','65464645',3,30,1,200,'2019-11-14','B003');
+insert into cargo(c_id, c_name, c_storerid, c_supplierid, c_shippingNO, c_whid, c_num, c_totalweight, c_totalvolume, c_receivedate, c_SKUmodel)
+values (4,'敌敌畏','杨絮','上海民企','756858568',1,40,1000,200,'2019-11-14','B004');
+select * from cargo;
 
 -- Records of cargo
 -- Table structure for cargo_borrow
@@ -87,6 +122,15 @@ CREATE TABLE `cargo_borrow` (
   `cb_status` varchar(255) DEFAULT NULL COMMENT '状态',
   PRIMARY KEY (`cb_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '货品借用表';
+
+insert into cargo_borrow(cb_id, cb_name, cb_SKUmodel, cb_num, cb_cause, cb_names, cb_time, cb_endtime, cb_status)
+values (1,'上海硫磺皂','B001',1,'没有洗澡的东西','韦海超的弟弟','2019-11-13','2019-11-15','以归还');
+insert into cargo_borrow(cb_id, cb_name, cb_SKUmodel, cb_num, cb_cause, cb_names, cb_time, cb_endtime, cb_status)
+values (2,'浓硫酸','B002',1,'拿去化学试验','韦海超的妹妹','2019-11-13','2019-11-15','以归还');
+insert into cargo_borrow(cb_id, cb_name, cb_SKUmodel, cb_num, cb_cause, cb_names, cb_time, cb_endtime, cb_status)
+values (3,'敌敌畏','B004',1,'农田杀虫','韦海超的哥哥','2019-11-13','2019-11-15','以归还');
+insert into cargo_borrow(cb_id, cb_name, cb_SKUmodel, cb_num, cb_cause, cb_names, cb_time, cb_endtime, cb_status)
+values (4,'稀硫酸','B003',1,'宿舍刷厕所','韦海超的表姐','2019-11-13','2019-11-15','以归还');
 
 -- ----------------------------
 -- Records of cargo_borrow
@@ -117,11 +161,11 @@ CREATE TABLE `cross_database` (
   `cd_id` int(11) NOT NULL AUTO_INCREMENT,
   `cd_name` varchar(255) NOT NULL COMMENT '货物名称',
   `cd_SKUmodel` varchar(255) NOT NULL COMMENT '货物型号',
-  `cd_num` double NOT NULL COMMENT '数量',
+  `cd_num` double NOT NULL COMMENT '发货数量',
   `cd_whid` varchar(500) NOT NULL COMMENT '仓库编号',
-  `cd_oddnumbers` varchar(500) NOT NULL ,
-  `cd_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '时间',
-  `cd_volume` double NOT NULL COMMENT '体积',
+  `cd_oddnumbers` varchar(500) NOT NULL  COMMENT '发货单号',
+  `cd_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '出库时间',
+  `cd_volume` double NOT NULL COMMENT '货物体积',
   PRIMARY KEY (`cd_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='越库出货单';
 
@@ -142,7 +186,7 @@ CREATE TABLE `give_back` (
   `gb_status` int(11) NOT NULL,
   `gb_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`gb_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='货品归还表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '货品归还表';
 
 -- ----------------------------
 -- Records of give_back
@@ -153,15 +197,15 @@ CREATE TABLE `give_back` (
 -- ----------------------------
 DROP TABLE IF EXISTS `godown`;
 CREATE TABLE `godown` (
-  `gostatus` int(11) DEFAULT NULL,  
+  `gostatus` int(11) DEFAULT NULL COMMENT '仓库状态',  
   `go_id` int(11) NOT NULL AUTO_INCREMENT,
-  `go_whid` varchar(255) DEFAULT NULL,
-  `go_p` int(255) DEFAULT NULL,
+  `go_whid` varchar(255) DEFAULT NULL COMMENT  '仓库编号',
+  `go_p` int(255) DEFAULT NULL COMMENT 	,
   `go_volume` double DEFAULT NULL,
   `go_usevolume` double DEFAULT NULL,
   `go_rdvolume` double DEFAULT NULL,
   PRIMARY KEY (`go_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT '仓库';
 
 -- ----------------------------
 -- Records of godown
@@ -605,7 +649,7 @@ CREATE TABLE `sales_return` (
   `sr_storerid` varchar(255) DEFAULT NULL COMMENT '客户',
   `sr_phone` varchar(255) DEFAULT NULL COMMENT '电话号码',
   `sr_names` varchar(255) DEFAULT NULL COMMENT '货物',
-  `sr_SKUmodel` varchar(255) DEFAULT NULL COMMENT '货物型号',
+  `sr_SKUmodel` varchar(255) DEFAULT NULL COMMENT ' ',
   `sr_num` double(255,0) DEFAULT NULL COMMENT '货物数量',
   `sr_cause` varchar(255) DEFAULT NULL COMMENT '退货原因',
   `sr_time` datetime DEFAULT NULL COMMENT '退货时间',
@@ -624,20 +668,38 @@ CREATE TABLE `sales_return` (
 DROP TABLE IF EXISTS `shipment`;
 CREATE TABLE `shipment` (
   `sh_id` int(11) NOT NULL AUTO_INCREMENT,
-  `sh_storeid` varchar(255) DEFAULT NULL,
-  `sh_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `sh_phone` varchar(255) DEFAULT NULL,
-  `sh_sippingNO` varchar(255) DEFAULT NULL,
-  `sh_whid` varchar(255) DEFAULT NULL,
-  `sh_damage` int(11) DEFAULT NULL,
-  `sh_cause` varchar(255) DEFAULT NULL,
-  `sh_SKUmodel` varchar(255) DEFAULT NULL,
-  `sh_shnum` double DEFAULT NULL,
-  `sh_totalweigh` double DEFAULT NULL,
-  `sh_totalvolume` double DEFAULT NULL,
+  `sh_storeid` varchar(255) DEFAULT NULL COMMENT '货主', 
+  `sh_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '实际出货时间',
+  `sh_phone` varchar(255) DEFAULT NULL COMMENT '号码',
+  `sh_sippingNO` varchar(255) DEFAULT NULL COMMENT '客户托单号', 
+  `sh_whid` varchar(255) DEFAULT NULL COMMENT '仓库',
+  `sh_damage` int(11) DEFAULT NULL COMMENT '损坏数量',
+  `sh_cause` varchar(255) DEFAULT NULL COMMENT '损坏原因',
+  `sh_SKUmodel` varchar(255) DEFAULT NULL COMMENT '型号',
+  `sh_shnum` double DEFAULT NULL COMMENT '实际出货数量',
+  `sh_totalweigh` double DEFAULT NULL COMMENT '发货重量',
+  `sh_totalvolume` double DEFAULT NULL COMMENT '发货体积',
+  status int ,
   PRIMARY KEY (`sh_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT '实际出库表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT '出货单';
 
+delete from shipment where sh_id = 4;
+insert  into  shipment(sh_id, sh_storeid, sh_time, sh_phone, sh_sippingNO, sh_whid, sh_damage, sh_cause, sh_SKUmodel, sh_shnum, sh_totalweigh, sh_totalvolume,status)
+values (1,'韦海超','2019-11-13','15977838331','234235235','A1',20,'数据调试更换','W001',10,20,300,0);
+insert  into  shipment(sh_id, sh_storeid, sh_time, sh_phone, sh_sippingNO, sh_whid, sh_damage, sh_cause, sh_SKUmodel, sh_shnum, sh_totalweigh, sh_totalvolume,status)
+values (2,'李钊灿','2019-11-13','16675640775','34253253','A2',220,'数据调试更换','W002',10,20,300,1);
+insert  into  shipment(sh_id, sh_storeid, sh_time, sh_phone, sh_sippingNO, sh_whid, sh_damage, sh_cause, sh_SKUmodel, sh_shnum, sh_totalweigh, sh_totalvolume,status)
+values (3,'巫山雄','2019-11-13','16675640534','53252325','A3',10,'数据调试更换','W003',10,20,300,2);
+insert  into  shipment(sh_id, sh_storeid, sh_time, sh_phone, sh_sippingNO, sh_whid, sh_damage, sh_cause, sh_SKUmodel, sh_shnum, sh_totalweigh, sh_totalvolume,status)
+values (4,'杨絮','2019-11-13','16675640764','523262','A1',120,'数据调试更换','W004',10,20,300,3);
+
+select * from shipment;
+
+SELECT sh.sh_id, sh.sh_storeid, sh.sh_time, sh.sh_phone, sh.sh_sippingNO, sh.sh_whid, sh.sh_damage, sh.sh_cause, sh.sh_SKUmodel, sh.sh_shnum, sh.sh_totalweigh, sh.sh_totalvolume, g.*
+FROM shipment sh, godown g
+WHERE sh.sh_whid = g.go_whid;
+
+alter table shipment add column status  int ;
 -- ----------------------------
 -- Records of shipment
 -- ----------------------------
@@ -745,6 +807,23 @@ INSERT INTO `user_role` VALUES ('3', '3', '4');
 INSERT INTO `user_role` VALUES ('8', '2', '3');
 INSERT INTO `user_role` VALUES ('10', '5', '4');
 INSERT INTO `user_role` VALUES ('11', '6', '1');
+
+
+create table crud(
+id int(11) not null AUTO_INCREMENT,
+crud_name varchar(32) not null,
+crud_age int ,
+crud_hobby varchar(32) ,
+crud_addr varchar(64),
+crud_salary varchar(32),
+crud_date datetime ,
+PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8
+insert into crud(id,crud_name,crud_age,crud_hobby,crud_addr,crud_salary,crud_date) 
+values(1,'大家',15,'学习','广西','3000','2019-11-13');
+`
+
+
 
 
 

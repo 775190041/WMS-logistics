@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Created by ZhongYu on 2016/12/19.
+ *
  */
 @Service
 public class ShipmentServiceImpl implements ShipmentService {
@@ -73,6 +73,7 @@ public class ShipmentServiceImpl implements ShipmentService {
      */
     @Override
     public int updateShipment(Shipment shipment) {
+
         return shipmentMapper.updateByPrimaryKeySelective(shipment);
     }
 

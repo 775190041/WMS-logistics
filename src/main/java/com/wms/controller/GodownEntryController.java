@@ -38,7 +38,7 @@ import com.wms.service.IUserService;
 import com.wms.service.ReceivingService;
 
 /**
- * 
+ *入库存储
  *
  */
 @Controller
@@ -112,6 +112,13 @@ public class GodownEntryController extends BaseController {
 		return renderError("删除失败");
 	}
 
+    /**
+     * 读取导入excle的数据
+     * @param file  excle路径
+     * @param request
+     * @param model
+     * @return
+     */
 	@RequestMapping("/readExcle")
 	public String Excle(@RequestParam("file") MultipartFile file, HttpServletRequest request, Model model) {
 		if (file != null) {

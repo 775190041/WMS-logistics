@@ -9,12 +9,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>调整出入库单查询</title>
     <script type="text/javascript">
-
         var dataGrid;
         var organizationTree;
-
         $(function() {
-
             dataGrid = $('#dataGrid').datagrid({
                 url : '${path }/adjust/select',
                 fit : true,

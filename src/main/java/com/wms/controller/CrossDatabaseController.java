@@ -30,7 +30,7 @@ import java.util.Map;
 
 /**
  * 越库出货单
- * Created by ZhongYu on 2016/12/23.
+ *
  */
 @Controller
 @RequestMapping(value = "crossDatabase")
@@ -55,7 +55,7 @@ public class CrossDatabaseController extends BaseController {
 
     /** 分页查询 */
     @ResponseBody
-    @PostMapping("dataGrid")
+    @PostMapping("/dataGrid")
     public Object dataGrid(Search search, Integer page, Integer rows, String sort, String order) {
         PageInfo pageInfo = new PageInfo(page, rows);
         Map<String, Object> condition = new HashMap<String, Object>();
