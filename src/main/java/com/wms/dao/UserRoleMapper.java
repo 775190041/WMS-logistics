@@ -17,4 +17,5 @@ public interface UserRoleMapper extends AutoMapper<UserRole> {
 
     List<Long> selectRoleIdListByUserId(@Param("userId") Long userId);
 
+
 }

@@ -15,6 +15,9 @@ import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 
+/**
+ * @author 骚哥神机
+ */
 public class ExcelToDisk<T> {
 	public void Excel( Object data[], String fileName, String [] title, HttpServletResponse resp){
 		try {

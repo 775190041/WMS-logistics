@@ -11,13 +11,13 @@ public class Tree implements java.io.Serializable {
 
     private static final long serialVersionUID = 980682543891282923L;
     private Long id;
-    private String text;
-    private String state = "open";// open,closed
-    private boolean checked = false;
-    private Object attributes;
+    private String text;    //数控件的文本值
+    private String state = "open"; // open,closed
+    private boolean checked = false; //默认不选中
+    private Object attributes;   //属性
     private List<Children> childrens;
     private List<Tree> children;
-    private String iconCls;
+    private String iconCls; //菜单项显示的图标
     private String pid;
 
     public List<Children> getChildrens() {

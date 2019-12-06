@@ -27,7 +27,6 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * cargo货物表
- * Created by DengMin on 2016/12/26.
  */
 @Controller
 @RequestMapping("/cargo")

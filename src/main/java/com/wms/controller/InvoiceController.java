@@ -30,7 +30,6 @@ import java.util.Map;
 
 /**
  * 直接发货单
- * Created by ZhongYu on 2016/12/23.
  */
 @Controller
 @RequestMapping(value = "invoice")

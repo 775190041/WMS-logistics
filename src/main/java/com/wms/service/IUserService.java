@@ -35,5 +35,5 @@ public interface IUserService extends ISuperService<User> {
 
     List<UserVo> selectByRole();
 
-    int add(User user);
+    int updateOutTime(User user);
 }

@@ -46,7 +46,6 @@ import com.wms.service.TariffService;
 
 /**
  * 实际出库表
- * Created by ZhongYu on 2016/12/19.
  */
 @Controller
 @RequestMapping(value = "shipment")

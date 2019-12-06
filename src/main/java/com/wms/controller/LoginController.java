@@ -122,7 +122,7 @@ public class LoginController extends BaseController {
             User users = new User();
             users.setOuttime(new Date());
             users.setId(uservo.getId());
-            iUserService.add(users);
+            iUserService.updateOutTime(users);
 
             return renderSuccess();
         } catch (UnknownAccountException e) {

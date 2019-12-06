@@ -2,7 +2,7 @@ package com.wms.commons.bean;
 
 /**
  * 描述:EasyUI下拉框
- * Created by ZhongYu on 2016/12/26.
+ *
  */
 public class ComboBox4EasyUI {
 

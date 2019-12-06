@@ -18,7 +18,6 @@ import java.util.Date;
 
 /**
  * 新增调拨单
- * Created by DengMin on 2017/1/6.
  */
 @Controller
 @RequestMapping("/allo")

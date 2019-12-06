@@ -27,6 +27,7 @@ public final class HttpSessionCsrfTokenRepository implements CsrfTokenRepository
      * springframework .security.web.csrf.CsrfToken,
      * javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
      */
+    @Override
     public void saveToken(CsrfTokenBean token, HttpServletRequest request,
                           HttpServletResponse response) {
         if (token == null) {
@@ -47,6 +48,7 @@ public final class HttpSessionCsrfTokenRepository implements CsrfTokenRepository
      * org.springframework.security.web.csrf.CsrfTokenRepository#loadToken(javax.servlet
      * .http.HttpServletRequest)
      */
+    @Override
     public CsrfTokenBean loadToken(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session == null) {
@@ -61,6 +63,7 @@ public final class HttpSessionCsrfTokenRepository implements CsrfTokenRepository
      * @see org.springframework.security.web.csrf.CsrfTokenRepository#generateToken(javax.
      * servlet .http.HttpServletRequest)
      */
+    @Override
     public CsrfTokenBean generateToken(HttpServletRequest request) {
         return new CsrfTokenBean(this.headerName, this.parameterName,
                 createNewToken());

@@ -66,7 +66,6 @@
             onClick : function(node) {
                 if (node.attributes.indexOf("http") >= 0) {
                     var url = node.attributes;
-           
                     addTab({
                         title : node.text,
                         url : url,
@@ -74,7 +73,6 @@
                     });
                 } else if (node.attributes) {
                     var url = '${path }' + node.attributes;
-                
                     addTab({
                         title : node.text,
                         url : url,
@@ -143,7 +141,7 @@
         <div data-options="region:'north',border:false" style=" overflow: hidden; ">
             <div>
                 <span style="float: right; padding-right: 20px; color: #333">
-                      欢迎<font color="red"><b><shiro:principal></shiro:principal></b></font>&nbsp;&nbsp;
+                      欢迎<span style="color: red; "><b><shiro:principal></shiro:principal></b></span>&nbsp;&nbsp;
                     <shiro:hasPermission name="/user/editPwdPage">
                         <a href="javascript:void(0)" onclick="editUserPwd()" class="easyui-linkbutton" plain="true" icon="icon-edit" >修改密码</a>
                     </shiro:hasPermission>&nbsp;&nbsp;

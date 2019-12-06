@@ -9,4 +9,4 @@
         <setting name="lazyLoadingEnabled" value="false"/>
         <setting name="aggressiveLazyLoading" value="true"/>
     </settings>
-</configuration> 
+</configuration>

@@ -40,6 +40,7 @@ public final class JsonUtils {
         }
     }
 
+
     private static ObjectMapper getInstance() {
         return JacksonHolder.INSTANCE;
     }

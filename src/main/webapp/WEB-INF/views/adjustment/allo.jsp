@@ -9,7 +9,6 @@
     <title>新增调拨单</title>
     <script type="text/javascript">
         var dataGrid;
-
         $(function() {
             $("#selectCombobox").combobox({
                 url:"${path}/godown/godownComboBox",

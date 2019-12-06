@@ -19,7 +19,6 @@ import java.util.Map;
 
 /**
  * 货品借出登记
- * Created by DengMin on 2016/12/21.
  */
 @Controller
 @RequestMapping("/borrow")
@@ -65,6 +64,7 @@ public class CargoBorrowController extends BaseController{
         return "adjustment/cargoborrowedit";
     }
 
+
     /**
      * 新增货品借出
      * @param cargoBorrow
@@ -75,6 +75,8 @@ public class CargoBorrowController extends BaseController{
     public Object add(CargoBorrow cargoBorrow,@RequestParam("status") String status){
         Cargo cargo = cargoService.selectByPrimaryKey(cargoBorrow.getCbId());
         Cargo c = new Cargo();
+        System.err.println("cargo = " + cargo.getcNum());
+        System.err.println("cargoBorrow.getCbNum() = " + cargoBorrow.getCbNum());
         if(cargo.getcNum() != cargoBorrow.getCbNum().intValue()){
             if(status.equals("1")){
                 cargoBorrow.setCbStatus("0");//0代表未归还
@@ -138,6 +140,7 @@ public class CargoBorrowController extends BaseController{
         return null;
     }
 
+
     /**
      * 删除
      * @param id
@@ -181,6 +184,7 @@ public class CargoBorrowController extends BaseController{
 
     /**
      * 普通用户分页查询
+     * (借用人)
      * @param userVo
      * @return
      */
@@ -194,5 +198,4 @@ public class CargoBorrowController extends BaseController{
         List<UserVo> list = iUserService.selectUserBytype(map);
         return list;
     }
-
 }

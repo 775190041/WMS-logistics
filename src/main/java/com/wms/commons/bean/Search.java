@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * 描述：搜索实体
- * Created by ZhongYu on 2016/12/26.
+ *
  */
 public class Search {
 

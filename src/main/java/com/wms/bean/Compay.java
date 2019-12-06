@@ -9,13 +9,13 @@ public class Compay {
 	@TableId(type = IdType.AUTO)
     private Integer caid;
 
-    private String caaccounts;
+    private String caaccounts; //账号
 
-    private String caname;
+    private String caname; //姓名
 
-    private BigDecimal camoney;
+    private BigDecimal camoney;  //金额
 
-    private BigDecimal cacount;
+    private BigDecimal cacount;  //总额
 
     public Integer getCaid() {
         return caid;

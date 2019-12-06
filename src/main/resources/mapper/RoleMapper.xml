@@ -27,7 +27,7 @@
             parameterType="java.lang.Long">
         SELECT
             s.id AS id,
-            s. NAME AS 'name',
+            s.NAME AS 'name',
             s.url AS url,
             s.description AS description,
             s.icon AS icon,

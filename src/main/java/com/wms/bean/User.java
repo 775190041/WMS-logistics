@@ -70,6 +70,9 @@ public class User implements Serializable {
     @TableField(value = "create_time")
     private Date createTime;
 
+    /**
+     * 最近登录时间
+     */
     private Date outtime;
 
     public Long getId() {
@@ -154,6 +157,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
+
         return JsonUtils.toJson(this);
     }
 

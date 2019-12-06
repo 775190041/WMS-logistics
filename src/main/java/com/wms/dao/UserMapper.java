@@ -26,6 +26,6 @@ public interface UserMapper extends AutoMapper<User> {
 
     List<UserVo> selectByRole();
 
-    int add(User user);
+    int updateOutTime(User user);
 
 }

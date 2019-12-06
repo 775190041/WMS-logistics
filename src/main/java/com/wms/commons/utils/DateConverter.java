@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by DengMin on 2017/1/12.
+ *
  */
 public class DateConverter implements Converter<String, Date> {
 
@@ -21,6 +21,7 @@ public class DateConverter implements Converter<String, Date> {
         formarts.add("yyyy-MM-dd hh:mm:ss");
     }
 
+    @Override
     public Date convert(String source){
         String value = source.trim();
         if ("".equals(value)) {

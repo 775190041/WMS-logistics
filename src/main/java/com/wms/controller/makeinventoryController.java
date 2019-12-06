@@ -42,7 +42,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 盘点单管理
- * Created by DengMin on 2016/12/23.
+ *
  */
 
 @Controller
@@ -65,7 +65,6 @@ public class makeinventoryController extends BaseController{
     private String selectpage(){
         return "adjustment/makeinventory";
     }
-
     /**
      * 删除
      * @param id
@@ -194,16 +193,16 @@ public class makeinventoryController extends BaseController{
             URL url= makeinventoryController.class.getResource("/"+file.getOriginalFilename());
             List<List<String>> list = ReadXls.readxls(url.getFile());
             MakeInventory makeInventory = new MakeInventory();
-            List<String> l = list.get(0);
+            List<String> l = list.get(1);
             for(int i=0;i<l.size();i++){
                 Cargo cargo = cargoService.selectByPrimaryKey(Integer.valueOf(l.get(0)));
-                makeInventory.setMiId(Integer.valueOf(l.get(0)));
-                makeInventory.setMiName(l.get(1).toString());
+                makeInventory.setMiId(Integer.valueOf(l.get(0))); //id
+                makeInventory.setMiName(l.get(1).toString());   //货物名称
                 Godown godown = godownService.selectByWhid(l.get(2).toString());
-                makeInventory.setMiWhid(godown.getGoId()+"");
-                makeInventory.setMiSkumodel(l.get(3).toString());
-                makeInventory.setMiActual(Double.valueOf(l.get(4).toString()));
-                makeInventory.setMiNames(l.get(5).toString());
+                makeInventory.setMiWhid(godown.getGoId().toString());   //仓库
+                makeInventory.setMiSkumodel(l.get(3).toString());   //型号
+                makeInventory.setMiActual(Double.valueOf(l.get(4).toString())); //实际盘点个数
+                makeInventory.setMiNames(l.get(5).toString());  //盘点人
                 makeInventory.setMiNum(Double.valueOf(cargo.getcNum()));
                 makeInventory.setMiOrder(OrderNumberUtil.generateOrderNo());
                 makeInventory.setMiTime(new Date());

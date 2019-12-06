@@ -2,12 +2,14 @@ package com.wms.service;
 
 import com.wms.bean.Shipment;
 import com.wms.commons.utils.PageInfo;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 import java.util.List;
 
 /**
- * Created by ZhongYu on 2016/12/19.
  */
+
 public interface ShipmentService {
 
     List<Shipment> queryAll();

@@ -64,7 +64,7 @@ public class UserServiceImpl extends SuperServiceImpl<UserMapper, User> implemen
     }
 
     @Override
-    public List<UserVo> selectUserBytype(Map<String,Object> map) {
+    public List<UserVo>     selectUserBytype(Map<String,Object> map) {
         return userMapper.selectUserBytype(map);
     }
 
@@ -132,8 +132,8 @@ public class UserServiceImpl extends SuperServiceImpl<UserMapper, User> implemen
     }
 
     @Override
-    public int add(User user) {
-        return userMapper.add(user);
+    public int updateOutTime(User user) {
+        return userMapper.updateOutTime(user);
     }
 
 }

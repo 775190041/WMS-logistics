@@ -75,7 +75,7 @@
                             case "1":
                                 return '已归还';
                             case "2":
-                                return '未归还';
+                                return '全部借出未归还';
                         }
                     }
                 },{
@@ -85,7 +85,7 @@
                         formatter : function(value, row, index) {
                             var str = '';
                             if(row.cbEndtime == null){
-                                <shiro:hasPermission name="/borrow/edit">
+                                <shiro:hasPermission name="/borrow/editPage">
                                 str += $.formatString('<a style="height: 24px;" href="javascript:void(0)" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'" onclick="editFun(\'{0}\');" >归还</a>', row.cbId);
                                 </shiro:hasPermission>
                             }

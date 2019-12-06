@@ -8,7 +8,7 @@
     </sql>
 
     <!-- 查询所有父菜单 -->
-    <select id="selectAllByTypeAndPIdNull" resultType="Resource">
+    <select id="selectable" resultType="com.wms.bean.Resource">
         select distinct
         <include refid="Base_Column_List"/>
         from resource
@@ -16,7 +16,7 @@
         and pid is null order by seq
     </select>
 
-    <select id="selectAllByTypeAndPId" resultType="Resource">
+    <select id="selectallbytypeandpid" resultType="com.wms.bean.Resource">
         select distinct
         <include refid="Base_Column_List"/>
         from resource
@@ -24,7 +24,7 @@
         and pid = #{pId} order by seq
     </select>
 
-    <select id="selectAll" resultType="Resource">
+    <select id="selectAll" resultType="com.wms.bean.Resource">
         select
         <include refid="Base_Column_List"/>
         from resource order by seq

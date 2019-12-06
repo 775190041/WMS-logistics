@@ -84,27 +84,31 @@ values(4,'宝马','D001',20,3,'666','2019-11-16',20,400000);
 -- ----------------------------
 DROP TABLE IF EXISTS `cargo`;
 CREATE TABLE `cargo` (
-  `c_id` int(11) NOT NULL AUTO_INCREMENT,
-  `c_name` varchar(255) DEFAULT NULL COMMENT  '货物名称';
-  `c_storerid` varchar(255) DEFAULT NULL COMMENT  '货主',
-  `c_supplierid` varchar(255) DEFAULT NULL COMMENT '供应商',
-  `c_shippingNO` varchar(255) DEFAULT NULL COMMENT  '客户托单号',
-  `c_whid` int(11) DEFAULT NULL COMMENT = '仓库编号',
-  `c_num` int(11) DEFAULT NULL COMMENT = '数量',
-  `c_totalweight` double DEFAULT NULL COMMENT = '总货毛重',
-  `c_totalvolume` double DEFAULT NULL COMMENT = '总货体积',
-  `c_receivedate` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT = '入库时间',
-  `c_SKUmodel` varchar(255) DEFAULT NULL COMMENT = '货物编号/型号',
-  PRIMARY KEY (`c_id`)
+        `c_id` int(11) NOT NULL AUTO_INCREMENT,
+        `c_name` varchar(255) DEFAULT NULL COMMENT  '货物名称',
+        `c_storerid` varchar(255) DEFAULT NULL COMMENT  '货主',
+        `c_supplierid` varchar(255) DEFAULT NULL COMMENT '供应商',
+        `c_shippingNO` varchar(255) DEFAULT NULL COMMENT  '客户托单号',
+        `c_whid` int(11) DEFAULT NULL COMMENT '仓库编号',
+        `c_num` int(11) DEFAULT NULL COMMENT '数量',
+        `c_totalweight` double DEFAULT NULL COMMENT  '总货毛重',
+        `c_totalvolume` double DEFAULT NULL COMMENT  '总货体积',
+        `c_receivedate` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT  '入库时间',
+        `c_SKUmodel` varchar(255) DEFAULT NULL COMMENT  '货物编号/型号',
+         c_phone varchar(255) DEFAULT NULL  COMMENT  '电话',
+         PRIMARY KEY (`c_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT= '货物表';
-insert into cargo(c_id, c_name, c_storerid, c_supplierid, c_shippingNO, c_whid, c_num, c_totalweight, c_totalvolume, c_receivedate, c_SKUmodel)
-values (1,'上海硫磺皂','韦海超','上海民企','32423525253',1,20,100,200,'2019-11-14','B001');
-insert into cargo(c_id, c_name, c_storerid, c_supplierid, c_shippingNO, c_whid, c_num, c_totalweight, c_totalvolume, c_receivedate, c_SKUmodel)
-values (2,'浓硫酸','李钊灿','上海民企','523235235',2,10,10,200,'2019-11-14','B002');
-insert into cargo(c_id, c_name, c_storerid, c_supplierid, c_shippingNO, c_whid, c_num, c_totalweight, c_totalvolume, c_receivedate, c_SKUmodel)
-values (3,'稀硫酸','巫山雄','上海民企','65464645',3,30,1,200,'2019-11-14','B003');
-insert into cargo(c_id, c_name, c_storerid, c_supplierid, c_shippingNO, c_whid, c_num, c_totalweight, c_totalvolume, c_receivedate, c_SKUmodel)
-values (4,'敌敌畏','杨絮','上海民企','756858568',1,40,1000,200,'2019-11-14','B004');
+
+--alter table cargo add column c_phone  varchar(255) DEFAULT null;
+--delete  from cargo where c_id=4;
+insert into cargo(c_id, c_name, c_storerid, c_supplierid, c_shippingNO, c_whid, c_num, c_totalweight, c_totalvolume, c_receivedate, c_SKUmodel,c_phone)
+values (1,'上海硫磺皂','韦海超','上海民企','32423525253',1,20,100,200,'2019-11-14','B001','15977838331');
+insert into cargo(c_id, c_name, c_storerid, c_supplierid, c_shippingNO, c_whid, c_num, c_totalweight, c_totalvolume, c_receivedate, c_SKUmodel,c_phone)
+values (2,'浓硫酸','李钊灿','上海民企','523235235',2,10,10,200,'2019-11-14','B002','15977838331');
+insert into cargo(c_id, c_name, c_storerid, c_supplierid, c_shippingNO, c_whid, c_num, c_totalweight, c_totalvolume, c_receivedate, c_SKUmodel,c_phone)
+values (3,'稀硫酸','巫山雄','上海民企','65464645',3,30,1,200,'2019-11-14','B003','15977838331');
+insert into cargo(c_id, c_name, c_storerid, c_supplierid, c_shippingNO, c_whid, c_num, c_totalweight, c_totalvolume, c_receivedate, c_SKUmodel,c_phone)
+values (4,'敌敌畏','杨絮','上海民企','756858568',1,40,1000,200,'2019-11-14','B004','15977838331');
 select * from cargo;
 
 -- Records of cargo
@@ -292,7 +296,7 @@ CREATE TABLE `make_inventory` (
   `mi_names` varchar(255) DEFAULT NULL COMMENT '盘点人',
   `mi_whid` int(11) DEFAULT NULL COMMENT '仓库编号',
   `mi_time` datetime DEFAULT NULL COMMENT '盘点时间',
-  `mi_Actual` double DEFAULT NULL,
+  `mi_Actual` double DEFAULT NUL COMMENT '实际盘点数量',
   PRIMARY KEY (`mi_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -703,7 +707,6 @@ alter table shipment add column status  int ;
 -- ----------------------------
 -- Records of shipment
 -- ----------------------------
-INSERT INTO `shipment` VALUES ('1', '那边', '2017-01-02 00:00:00', '123456', '201701030941351', '1', '50', '集合', 'kiu', '150', '20', '10');
 
 -- ----------------------------
 -- Table structure for stock_removal

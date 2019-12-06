@@ -54,7 +54,6 @@ public class Cargo {
 
 	@TableField(value = "c_SKUmodel")
     private String cSkumodel;
-
 	@TableField(value = "c_phone")
     private String cPhone;
 
@@ -162,6 +161,7 @@ public class Cargo {
         this.createdateEnd = createdateEnd;
     }
 
+
     public String getcPhone() {
         return cPhone;
     }
@@ -169,6 +169,7 @@ public class Cargo {
     public void setcPhone(String cPhone) {
         this.cPhone = cPhone;
     }
+
 
     public List<Godown> getGodowns() {
         return godowns;

@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  * 货品归还登记
- * Created by DengMin on 2016/12/23.
+ *
  */
 @Controller
 @RequestMapping("/giveback")

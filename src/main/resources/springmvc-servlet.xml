@@ -47,8 +47,14 @@
     </mvc:interceptors>
 
     <mvc:annotation-driven>
+        <!-- register-defaults="true"将我们配置文件创建的bean设置为默认的,springmvc就不会再后台创建了 -->
         <mvc:message-converters register-defaults="false">
+
             <!-- 将StringHttpMessageConverter的默认编码设为UTF-8 -->
+            <!-- 属性解释:
+                1.register-defaults=true:告诉Springmvc使用我们配置文件创建的对象,
+                不再自己创建(框架自己创建,是通过无参构造,会使用默认的字符集)
+                2.index="0" value="UTF-8":配置的是 defaultCharset 属性,设置为UTF-8-->
             <bean class="org.springframework.http.converter.StringHttpMessageConverter">
                 <constructor-arg value="UTF-8"/>
             </bean>
@@ -56,15 +62,17 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
+
     <bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="objectMapper" ref="jacksonObjectMapper" />
         <property name="supportedMediaTypes">
             <list>
                 <value>text/html;charset=UTF-8</value>
                 <value>application/json;charset=UTF-8</value>
             </list>
         </property>
-        <property name="objectMapper" ref="jacksonObjectMapper" />
     </bean>
+
 
     <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
         <property name="converters">

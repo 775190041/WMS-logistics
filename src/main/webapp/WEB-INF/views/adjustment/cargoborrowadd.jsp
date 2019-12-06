@@ -90,7 +90,7 @@
                 width : 60,
                 formatter : function(value, row, index) {
                     var str = '';
-                    <shiro:hasPermission name="/borrow/edit">
+                    <shiro:hasPermission name="/borrow/editPage">
                         str += $.formatString('<a style="height: 24px;" href="javascript:void(0)" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-ok\'" onclick="yes(\'{0}\');" >确定</a>');
                     </shiro:hasPermission>
                     return str;
@@ -148,7 +148,7 @@
                 width : 60,
                 formatter : function(value, row, index) {
                     var str = '';
-                    <shiro:hasPermission name="/borrow/edit">
+                    <shiro:hasPermission name="/borrow/editPage">
                     str += $.formatString('<a style="height: 24px;" href="javascript:void(0)" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-ok\'" onclick="useryes(\'{0}\');" >确定</a>');
                     </shiro:hasPermission>
                     return str;
@@ -251,6 +251,7 @@
             </tr>
         </table>
     </form>
+
      <table id="SelectDataGrid" data-options="fit:true,border:false"></table>
 </div>
 <div id="SelectUser" class="easyui-window" style="width:470px;height:300px;" title="用户信息表" data-options="closable:true, closed:true">

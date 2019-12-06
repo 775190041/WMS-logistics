@@ -58,6 +58,7 @@
         </where>
     </select>
 
+
     <select id="selectUserVoPage" resultMap="userVoResultMap">
         SELECT
         t.id,
@@ -95,7 +96,7 @@
     <select id="selectUserBytype" resultMap="userVoResultMap">
         SELECT * from user
         <where>
-            user_type = 4
+            user_type = 1
             <if test=" name != null and name != '' ">
                 and name = #{name}
             </if>
@@ -109,7 +110,7 @@
 		</where>
 	</select>
 
-    <update id="add">
+    <update id="updateOutTime">
         update user set outtime = #{outtime,jdbcType=TIMESTAMP}
         where id = #{id,jdbcType=BIGINT}
     </update>
